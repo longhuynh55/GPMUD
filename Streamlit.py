@@ -1,8 +1,14 @@
-import streamlit as st
-import pandas as pd
-import plotly.graph_objects as go
-import os
-import numpy as np
+try:
+    import streamlit as st
+    import pandas as pd
+    import plotly.graph_objects as go
+    import os
+    import numpy as np
+except ImportError as e:
+    print(f"Thiếu thư viện: {str(e)}")
+    print("Vui lòng cài đặt các thư viện cần thiết bằng lệnh:")
+    print("pip install streamlit pandas plotly numpy plotly-express")
+    exit(1)
 
 def load_csv_files(folder_path):
     """Load all CSV files from the specified folder"""
@@ -54,7 +60,7 @@ def main():
     st.title('Stock Price Viewer')
     
     # Đường dẫn tới thư mục chứa file CSV
-    folder_path = "D:\dai hoc\Data\Data cleanned\processed"  # Thay đổi đường dẫn này theo thư mục của bạn
+    folder_path = "D:\dai hoc\GPM\data\processed_data\Data cleanned"  # Thay đổi đường dẫn này theo thư mục của bạn
     
     try:
         # Load danh sách file CSV
